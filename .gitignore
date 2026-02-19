@@ -1,0 +1,9 @@
+# Python-generated files
+__pycache__/
+*.py[co]
+
+# Virtual environment
+.venv/
+
+# test file
+# test.py
