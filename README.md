@@ -68,7 +68,7 @@ Request one reminder by sending a GET request with the reminder ID
 Delete one reminder by sending a DELETE request with the reminder ID
 
 ## Request Data - Example Calls
-#  Record a new reminder
+##  Record a new reminder
 ```
 response = requests.post(
     "http://localhost:8000/reminders",
@@ -76,28 +76,28 @@ response = requests.post(
 )
 ```
 
-# Request all reminders
+## Request all reminders
 ```
 response = requests.get("http://localhost:8000/reminders")
 ```
 
-# Request one reminder
+## Request one reminder
 ```
 response = requests.get("http://localhost:8000/reminders/{reminder_id}")
 ```
 
-# Delete one reminder
+## Delete one reminder
 ```
 response = requests.delete("http://localhost:8000/reminders/{reminder_id}")
 ```
 
 ## Receiving Data
-# Receive all reminders, store jsbon object in response variable
+## Receive all reminders, store jsbon object in response variable
 ```
 responseAllReminders = requests.get("http://localhost:8000/reminders")
 ```
 
-# Request one reminder, store json object in response variable
+## Request one reminder, store json object in response variable
 ```
 responeOneReminder = requests.get("http://localhost:8000/reminders/{reminder_id}")
 ```
@@ -117,4 +117,8 @@ The microservice validates:
 - GET /reminders only returns future/today reminders (past reminders are filtered out)
 - Reminder IDs are automatically generated as "r_" followed by 8 random characters
 - The microservice runs on port 8000 by default
+
+## UML Diagram
+
+![Reminder Microservice UML](https://github.com/user-attachments/assets/9431b6f2-1dbb-4364-91e5-4b1995fb483f)
 
