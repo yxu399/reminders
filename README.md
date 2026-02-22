@@ -60,8 +60,47 @@ Reminders are stored in `reminders.json` in the same directory as `main.py`. Thi
   }
 ]
 ```
+## Request Data
 
+Submit a new reminder by POSTing a json object
+Request all reminders by sending a GET request
+Request one reminder by sending a GET request with the reminder ID
+Delete one reminder by sending a DELETE request with the reminder ID
 
+## Request Data - Example Calls
+#  Record a new reminder
+```
+response = requests.post(
+    "http://localhost:8000/reminders",
+    json={"message": "Team meeting 2", "date": "02-26-2026"}
+)
+```
+
+# Request all reminders
+```
+response = requests.get("http://localhost:8000/reminders")
+```
+
+# Request one reminder
+```
+response = requests.get("http://localhost:8000/reminders/{reminder_id}")
+```
+
+# Delete one reminder
+```
+response = requests.delete("http://localhost:8000/reminders/{reminder_id}")
+```
+
+## Receiving Data
+# Receive all reminders, store jsbon object in response variable
+```
+responseAllReminders = requests.get("http://localhost:8000/reminders")
+```
+
+# Request one reminder, store json object in response variable
+```
+responeOneReminder = requests.get("http://localhost:8000/reminders/{reminder_id}")
+```
 
 ## Error Handling
 
