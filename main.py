@@ -6,6 +6,8 @@ import uuid
 
 app = Flask(__name__)
 
+# ##### SET UP DATA STORAGE AND HELPER FUNCTIONS ##############################
+
 # File to store reminders
 DATA_FILE = 'reminders.json'
 
@@ -60,6 +62,8 @@ def is_active_reminder(date_str):
     except:
         return False
 
+
+# ##### DEFINE API ENDPOINTS #################################################
 
 # CREATE: POST /reminders
 @app.route('/reminders', methods=['POST'])
