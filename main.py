@@ -53,23 +53,8 @@ def is_past_date(date_str):
         return False
 
 
-# Check if date is in the future or today
-def is_active_reminder(date_str):
-    try:
-        reminder_date = datetime.strptime(date_str, '%m-%d-%Y')
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-        return reminder_date >= today
-    except:
-        return False
-
-
-# ##### DEFINE API ENDPOINTS #################################################
-
-# CREATE: POST /reminders
-@app.route('/reminders', methods=['POST'])
-def create_reminder():
-    data = request.get_json()
-
+# Validate data
+def validate_data(data):
     # Check if message is provided
     if not data or 'message' not in data:
         return jsonify({'error': 'Message is required'}), 400
@@ -82,6 +67,20 @@ def create_reminder():
     if not validate_date(data['date']):
         return jsonify({'error': 'Invalid date format. Use MM-DD-YYYY'}), 400
 
+    return None
+
+
+# Check if date is in the future or today
+def is_active_reminder(date_str):
+    try:
+        reminder_date = datetime.strptime(date_str, '%m-%d-%Y')
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        return reminder_date >= today
+    except:
+        return False
+
+
+def build_reminder(data):
     # Generate unique ID
     reminder_id = 'r_' + str(uuid.uuid4())[:8]
 
@@ -96,6 +95,24 @@ def create_reminder():
     # Check if date is in the past and add warning
     if is_past_date(data['date']):
         reminder['warning'] = 'Date is in the past'
+
+    return reminder
+
+# ##### DEFINE API ENDPOINTS #################################################
+
+
+# CREATE: POST /reminders
+@app.route('/reminders', methods=['POST'])
+def create_reminder():
+    data = request.get_json()
+
+    # Validate data received from client
+    data_error = validate_data(data)
+    if data_error:
+        return data_error
+
+    # Build reminder object with unique ID and status
+    reminder = build_reminder(data)
 
     # Load existing reminders, add new one, and save
     reminders = load_reminders()

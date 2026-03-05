@@ -4,5 +4,57 @@
     "message": "Team meeting",
     "date": "02-25-2026",
     "status": "active"
+  },
+  {
+    "id": "r_bf1aef82",
+    "message": "Team meeting",
+    "date": "02-25-2026",
+    "status": "active",
+    "warning": "Date is in the past"
+  },
+  {
+    "id": "r_90bf6c42",
+    "message": "Team meeting",
+    "date": "04-30-2026",
+    "status": "active"
+  },
+  {
+    "id": "r_2c682672",
+    "message": "Team meeting",
+    "date": "04-30-2026",
+    "status": "active"
+  },
+  {
+    "id": "r_71cd7364",
+    "message": "Past reminder",
+    "date": "01-01-2020",
+    "status": "active",
+    "warning": "Date is in the past"
+  },
+  {
+    "id": "r_30d501e8",
+    "message": "Team meeting",
+    "date": "04-30-2026",
+    "status": "active"
+  },
+  {
+    "id": "r_bf311af0",
+    "message": "Past reminder",
+    "date": "01-01-2020",
+    "status": "active",
+    "warning": "Date is in the past"
+  },
+  {
+    "id": "r_3d389ed5",
+    "message": "Team meeting",
+    "date": "05-30-2026",
+    "status": "active"
+  },
+  {
+    "id": "r_688cd240",
+    "message": "Past reminder",
+    "date": "01-01-2020",
+    "status": "active",
+    "warning": "Date is in the past"
   }
 ]
