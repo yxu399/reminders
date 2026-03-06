@@ -53,6 +53,16 @@ def is_past_date(date_str):
         return False
 
 
+# Check if date is in the future or today
+def is_active_reminder(date_str):
+    try:
+        reminder_date = datetime.strptime(date_str, '%m-%d-%Y')
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        return reminder_date >= today
+    except:
+        return False
+
+
 # Validate data
 def validate_data(data):
     # Check if message is provided
@@ -70,16 +80,7 @@ def validate_data(data):
     return None
 
 
-# Check if date is in the future or today
-def is_active_reminder(date_str):
-    try:
-        reminder_date = datetime.strptime(date_str, '%m-%d-%Y')
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-        return reminder_date >= today
-    except:
-        return False
-
-
+# Build reminder object with unique ID and status
 def build_reminder(data):
     # Generate unique ID
     reminder_id = 'r_' + str(uuid.uuid4())[:8]
